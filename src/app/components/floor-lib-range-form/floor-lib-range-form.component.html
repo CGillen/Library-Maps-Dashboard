@@ -1,0 +1,28 @@
+<form [formGroup]="libRangeForm" (ngSubmit)="onSubmit()">
+  <input [hidden]="!environment.debug" id="LibRange-id" name="id" formControlName="id">
+  <input [hidden]="!environment.debug" name="floor_id" formControlName="floor_id">
+
+  <p>
+    <mat-form-field>
+      <mat-label for="new-LibRange-name">Name: </mat-label>
+      <input matInput id="new-LibRange-name" type="text" name="name" formControlName="name">
+    </mat-form-field>
+  </p>
+
+  <div *ngFor="let coord of polygon.controls; let i = index" formArrayName="polygon">
+    <div [formGroupName]="i">
+      <mat-form-field>
+        <mat-label>Coord {{ i + 1 }} Latitude: </mat-label>
+        <input matInput type="number" name="Latitude" formControlName="lat" >
+      </mat-form-field>
+      &nbsp;
+      <mat-form-field>
+        <mat-label>Coord {{ i + 1 }} longitude: </mat-label>
+        <input matInput type="number" name="Longitude" formControlName="lng" >
+      </mat-form-field>
+    </div>
+  </div>
+
+  <button type="button" (click)="addCoord()">Add Coordinate</button>
+  <button type="submit" [disabled]="!libRangeForm.valid">Submit</button>
+</form>

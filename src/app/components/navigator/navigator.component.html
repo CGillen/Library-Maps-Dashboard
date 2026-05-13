@@ -1,0 +1,33 @@
+<mat-toolbar color="primary">
+  <button mat-icon-button (click)="drawer.toggle()" class="icon" aria-label="Example icon-button with menu icon">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <span>Library Maps</span>
+  <span class="spacer"></span>
+  <button mat-icon-button class="icon favorite-icon" aria-label="Example icon-button with heart icon">
+    <mat-icon>favorite</mat-icon>
+  </button>
+  <button mat-icon-button class="icon" aria-label="Example icon-button with share icon">
+    <mat-icon>share</mat-icon>
+  </button>
+</mat-toolbar>
+
+
+<mat-sidenav-container class="container" autosize>
+  <mat-sidenav mode="side" #drawer class="sidenav" mode="side">
+    <mat-nav-list>
+      <a mat-list-item routerLink="/dashboard">Dashboard</a>
+      <a mat-list-item routerLink="/floors">Map Edit</a>
+      <!-- <a mat-list-item routerLink="/libranges">Ranges</a> -->
+      <a mat-list-item routerLink="/bays">Bays</a>
+      <a mat-list-item routerLink="/shelves">Shelves</a>
+      <a target="_blank" mat-list-item routerLink="/map">Map</a>
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <div class="sidenav-content">
+      <ng-content></ng-content>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

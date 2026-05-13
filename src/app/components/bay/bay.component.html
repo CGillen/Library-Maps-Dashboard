@@ -1,0 +1,20 @@
+<h2>My Bays</h2>
+
+<mat-grid-list cols="3" rowHeight="512px">
+  <mat-grid-tile colspan="2">
+    <mat-selection-list class="bays" #libBays [multiple]="false" (selectionChange)="this.bay = $event.options[0].value;">
+      <!-- null value to indicate that the form should add a new object -->
+      <mat-list-option [value]="null"><span class="badge">+</span>Add new Bay</mat-list-option>
+      <mat-list-option *ngFor="let libBay of bays" [value]="libBay" selected="{{this.bay == libBay}}">
+        <span class="badge">{{libBay.id}}</span> {{libBay.name}}
+      </mat-list-option>
+    </mat-selection-list>
+  </mat-grid-tile>
+
+  <mat-grid-tile colspan="1">
+    <app-form-card [title]="this.bay?.name || 'Add New Bay'">
+      <app-bay-form [(bays)]="this.bays" [(bay)]="this.bay"></app-bay-form>
+    </app-form-card>
+  </mat-grid-tile>
+</mat-grid-list>
+

@@ -1,0 +1,7 @@
+<app-navigator *ngIf="!this.router.url.includes('/map')">
+  <h1>Title</h1>
+  <router-outlet></router-outlet>
+  <app-messages></app-messages>
+</app-navigator>
+<app-leaflet-iframe *ngIf="this.router.url.includes('/map')"></app-leaflet-iframe>
+

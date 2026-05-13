@@ -1,0 +1,34 @@
+<form [formGroup]="bayForm" (ngSubmit)="onSubmit()">
+  <input size="25" *ngIf="bay" id="bay-id" type="hidden" name="id" formControlName="id">
+
+  <p>
+    <mat-form-field>
+      <mat-label for="new-bay-name">Name: </mat-label>
+      <input size="25" matInput id="new-bay-name" type="text" name="name" formControlName="name">
+    </mat-form-field>
+  </p>
+
+  <p>
+    <mat-form-field>
+      <mat-label for="new-bay-start-call-number">Starting Call Number: </mat-label>
+      <input size="25" matInput id="new-bay-start-call-number" type="text" name="start_call_number" formControlName="start_call_number">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label for="new-bay-end-call-number">Ending Call Number: </mat-label>
+      <input size="25" matInput id="new-bay-end-call-number" type="text" name="end_call_number" formControlName="end_call_number">
+    </mat-form-field>
+  </p>
+
+  <p>
+    <mat-form-field>
+      <mat-label for="new-bay-range-id">Range: </mat-label>
+      <mat-select id="new-bay-range-id" type="select" name="lib_range_id" formControlName="lib_range_id">
+        <mat-option value="{{libRange.id}}" *ngFor="let libRange of this.libRanges">
+          {{libRange.name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </p>
+
+  <button type="submit" [disabled]="!bayForm.valid">Submit</button>
+</form>

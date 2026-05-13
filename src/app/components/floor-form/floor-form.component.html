@@ -1,0 +1,16 @@
+<form [formGroup]="floorForm" (ngSubmit)="onSubmit()">
+  <input size="25" *ngIf="floor" id="floor-id" type="hidden" name="id" formControlName="id">
+
+  <p>
+    <mat-form-field>
+      <mat-label for="new-floor-name">Name: </mat-label>
+      <input size="25" matInput id="new-floor-name" type="text" name="name" formControlName="name">
+    </mat-form-field>
+  </p>
+
+  <p>
+    <input type="file" name="image" #image (change)="uploadImageChange($event)"/>
+  </p>
+
+  <button type="submit" [disabled]="!floorForm.valid">Submit</button>
+</form>

@@ -1,0 +1,29 @@
+<h2>My Map</h2>
+
+<mat-grid-list cols="3" rowHeight="512px">
+  <mat-grid-tile colspan="2">
+    <mat-selection-list class="floors" #libFloors [multiple]="false" (selectionChange)="this.updateFloor($event.options[0].value);">
+      <!-- null value to indicate that the form should add a new object -->
+      <mat-list-option [value]="null"><span class="badge">+</span>Add new Floor</mat-list-option>
+      <mat-list-option *ngFor="let libFloor of floors" [value]="libFloor" selected="{{this.floor == libFloor}}">
+        <span class="badge">{{libFloor.id}}</span> {{libFloor.name}}
+      </mat-list-option>
+    </mat-selection-list>
+  </mat-grid-tile>
+
+  <mat-grid-tile colspan="1">
+    <app-form-card [title]="this.floor?.name || 'Add New Floor'">
+      <app-floor-form [(floors)]="this.floors" [floor]="this.floor" (floorChange)="updateFloor($event)"></app-floor-form>
+    </app-form-card>
+  </mat-grid-tile>
+
+  <mat-grid-tile colspan="2">
+    <app-leaflet-map style="height: 100%;width: 100%;" [floor]="this.floor" [libRanges]="this.curLibRanges"></app-leaflet-map>
+  </mat-grid-tile>
+
+  <mat-grid-tile colspan="1">
+    <app-form-card [title]="'Range Name'">
+      <app-floor-lib-range-form [floor]="this.floor"></app-floor-lib-range-form>
+    </app-form-card>
+  </mat-grid-tile>
+</mat-grid-list>

@@ -1,0 +1,24 @@
+<h2>My Ranges</h2>
+
+<mat-grid-list cols="3" rowHeight="512px">
+  <mat-grid-tile colspan="2">
+    <mat-selection-list class="lib-ranges" #ranges [multiple]="false" (selectionChange)="this.libRange = $event.options[0].value;">
+      <!-- null value to indicate that the form should add a new object -->
+      <mat-list-option [value]="null"><span class="badge">+</span>Add new Range</mat-list-option>
+      <mat-list-option *ngFor="let libRange of libRanges" [value]="libRange" selected="{{this.libRange == libRange}}">
+        <span class="badge">{{libRange.id}}</span> {{libRange.name}}
+      </mat-list-option>
+    </mat-selection-list>
+  </mat-grid-tile>
+
+  <mat-grid-tile colspan="1">
+    <app-form-card [title]="this.libRange?.name || 'Add New Range'">
+      <app-lib-range-form [(libRanges)]="this.libRanges" [(libRange)]="this.libRange"></app-lib-range-form>
+    </app-form-card>
+  </mat-grid-tile>
+
+  <mat-grid-tile colspan="3">
+    <app-leaflet-map style="height: 100%;width: 100%;" [floor]="this.floor" [libRanges]="this.libRanges"></app-leaflet-map>
+  </mat-grid-tile>
+</mat-grid-list>
+

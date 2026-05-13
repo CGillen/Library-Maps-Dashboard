@@ -1,0 +1,19 @@
+<h2>My Shelves</h2>
+
+<mat-grid-list cols="3" rowHeight="512px">
+  <mat-grid-tile colspan="2">
+    <mat-selection-list class="shelves" #libShelves [multiple]="false" (selectionChange)="this.shelf = $event.options[0].value">
+      <!-- null value to indicate that the form should add a new object -->
+      <mat-list-option [value]="null"><span class="badge">+</span>Add new Shelf</mat-list-option>
+      <mat-list-option *ngFor="let libShelf of shelves" [value]="libShelf" selected="{{this.shelf == libShelf}}">
+        <span class="badge">{{libShelf.id}}</span> {{libShelf.name}}
+      </mat-list-option>
+    </mat-selection-list>
+  </mat-grid-tile>
+
+  <mat-grid-tile colspan="1">
+    <app-form-card [title]="this.shelf?.name || 'Add New Shelf'">
+      <app-shelf-form [(shelves)]="this.shelves" [(shelf)]="this.shelf"></app-shelf-form>
+    </app-form-card>
+  </mat-grid-tile>
+</mat-grid-list>

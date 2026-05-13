@@ -1,0 +1,34 @@
+<form [formGroup]="shelfForm" (ngSubmit)="onSubmit()">
+  <input size="25" *ngIf="shelf" id="shelf-id" type="hidden" name="id" formControlName="id">
+
+  <p>
+    <mat-form-field>
+      <mat-label for="new-shelf-name">Name: </mat-label>
+      <input size="25" matInput id="new-shelf-name" type="text" name="name" formControlName="name">
+    </mat-form-field>
+  </p>
+
+  <p>
+    <mat-form-field>
+      <mat-label for="new-shelf-start-call-number">Starting Call Number: </mat-label>
+      <input size="25" matInput id="new-shelf-start-call-number" type="text" name="start_call_number" formControlName="start_call_number">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label for="new-shelf-end-call-number">Ending Call Number: </mat-label>
+      <input size="25" matInput id="new-shelf-end-call-number" type="text" name="end_call_number" formControlName="end_call_number">
+    </mat-form-field>
+  </p>
+
+  <p>
+    <mat-form-field>
+      <mat-label for="new-shelf-bay-id">Bay: </mat-label>
+      <mat-select id="new-shelf-bay-id" type="select" name="bay_id" formControlName="bay_id">
+        <mat-option value="{{bay.id}}" *ngFor="let bay of this.bays">
+          {{bay.name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </p>
+
+  <button type="submit" [disabled]="!shelfForm.valid">Submit</button>
+</form>

@@ -1,0 +1,20 @@
+<div *ngIf="shelf">
+  <h2>{{shelf.name | uppercase}} Details</h2>
+
+  <div><span>id: </span>{{shelf.id}}</div>
+  <div>
+    <label>Shelf name:</label>
+    <input id="name" [(ngModel)]="shelf.name" placeholder="name">
+  </div>
+  <div>
+    <label>Shelf starting call number:</label>
+    <input id="start_call_number" [(ngModel)]="shelf.start_call_number" placeholder="starting call number">
+  </div>
+  <div>
+    <label>Shelf ending call number:</label>
+    <input id="end_call_number" [(ngModel)]="shelf.end_call_number" placeholder="end_call_number">
+  </div>
+
+  <button type="button" (click)="save()">Save</button>
+  <button type="button" (click)="goBack()">Go Back</button>
+</div>

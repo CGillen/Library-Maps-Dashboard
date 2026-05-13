@@ -1,0 +1,31 @@
+<h2>Top Shelves</h2>
+<div class="shelves-menu">
+  <a *ngFor="let shelf of shelves"
+    routerLink="/shelves/{{shelf.id}}">
+    {{shelf.name}}
+  </a>
+</div>
+<app-shelf-search></app-shelf-search>
+
+<h2>Top Bays</h2>
+<div class="bays-menu">
+  <a *ngFor="let bay of bays"
+    routerLink="/bays/{{bay.id}}">
+    {{bay.name}}
+  </a>
+</div>
+<app-bay-search></app-bay-search>
+
+<h2>Top LibRanges</h2>
+<div class="lib-range-menu">
+  <a *ngFor="let libRange of libRanges"
+    routerLink="/shelves/{{libRange.id}}">
+    {{libRange.name}}
+  </a>
+</div>
+<app-lib-range-search></app-lib-range-search>
+
+<!-- Test the map iFrame -->
+<iframe *ngIf="environment.debug" src="http://localhost:4200/map"
+        style="width:100%;height:720px"
+        title="I'm the map, I'm the map, I'm the map, I'M THE MAP!"></iframe>

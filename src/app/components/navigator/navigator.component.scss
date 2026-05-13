@@ -1,0 +1,18 @@
+.spacer {
+  flex: 1 1 auto;
+}
+mat-sidenav-container,
+mat-sidenav {
+  padding-top: 70px;
+}
+mat-sidenav {
+  position: fixed;
+}
+mat-toolbar {
+  position: fixed;
+  z-index: 10;
+}
+
+mat-sidenav-content {
+  padding: 2em;
+}
